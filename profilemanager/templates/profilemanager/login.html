@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %}{% block header %}
+{% extends 'base.html' %} {% load widget_tweaks %}{% load static %}{% block header %}
 <title>Login</title>
 <link rel="stylesheet" type="text/css" href="{% static 'profilemanager/css/style.css' %}" /> {% endblock %}{% block body %}
 <div id=login-form>
@@ -7,10 +7,12 @@
     </div>
     <form method="post" class="border border-primary rounded">
         <h5>Client Login</h5>
-        {% csrf_token %}
+        {% csrf_token %}{% for hidden in form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in form.visible_fields %}
         <div class="form-group">
-            {{ form }}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label> {{ field|add_class:'form-control' }} {% for error in field.errors %}
+            <span class="help-block">{{ error }}</span> {% endfor %}
         </div>
+        {% endfor %} {{ form.errors }} {{ form.non_field_errors }}
         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
     </form>
     <div class="reg-area">
