@@ -5,7 +5,8 @@ class Crypto(models.Model):
     name = models.CharField(max_length=50, default='', unique=True)
     code = models.CharField(max_length=4, default='', unique=True)
     code_alt = models.CharField(max_length=4, default='', unique=True)
-
+    def __str__(self):
+        return self.name
 '''
 "CreatedTimestampUtc ":UTC timestamp of when the data was generated,
 "HistorySummaryItems":[ List of hourly summary blocks
@@ -38,8 +39,6 @@ class DailyPrice(models.Model):
     low_value = models.FloatField(default=0)
     close_value = models.FloatField(default=0)
     volume = models.FloatField(default=0)
-
-
 '''
 "CreatedTimestampUtc ": UTC timestamp of when the market summary was generated
 "CurrentHighestBidPrice": Current highest bid on order book

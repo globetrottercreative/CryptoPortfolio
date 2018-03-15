@@ -22,9 +22,12 @@ post_save.connect(create_profile, sender=User)
 #Multi-Crypto Wallet Data Model
 class Wallet(models.Model):
     user_id = models.ForeignKey(UserProfile, on_delete=models.CASCADE, blank=True)
+    name = models.CharField(max_length=100, default='')
     ethereum = models.FloatField(default=0)
     bitcoin = models.FloatField(default=0)
     bitcoincash = models.FloatField(default=0)
+    def __str__(self):
+        return self.name
 
 #Create Wallet on any UserProfile create event
 def create_wallet(sender, **kwargs):

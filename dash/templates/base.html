@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'dash/css/bootstrap.css' %}" /> {% block header %}
     <title>Crypto Portfolio</title>{% endblock %}
 </head>
 
 <body>
+    {% if request.user.is_authenticated %}
+    <!-- Then show authenticated stuff -->
+    {% else %}
+    <!-- Else dont show authenticated stuff -->
+    {% endif %}
     {% block body %} {% endblock %}
     <script src="{% static 'dash/js/jquery.min.js' %}"></script>
     <script src="{% static 'dash/js/popper.min.js' %}"></script>

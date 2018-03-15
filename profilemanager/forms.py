@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from profilemanager.models import UserProfile
+from profilemanager.models import UserProfile, Wallet
 
 class CreateUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -42,7 +42,7 @@ class EditProfileForm(forms.ModelForm):
         ('USD', 'USD'),
         ('AUD', 'AUD'),
         ]
-    currency = forms.CharField(label='Base Fiat', widget=forms.Select(choices=CURRENCY_CHOICES))
+    currency = forms.CharField(widget=forms.Select(choices=CURRENCY_CHOICES))
     class Meta():
         model = UserProfile
         fields = {
@@ -90,3 +90,98 @@ class EditProfileForm(forms.ModelForm):
             print('COMMIT ERROR')
 
         return profile
+
+class EditWalletForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.myid = kwargs.pop('myid')
+        super(EditWalletForm, self).__init__(*args, **kwargs)
+
+    class Meta():
+        model = Wallet
+        fields = {
+            'name',
+            'ethereum',
+            'bitcoin',
+            'bitcoincash',
+            }
+        labels = {
+            'name': 'Wallet Name',
+            'ethereum': 'Ethereum Holdings',
+            'bitcoin': 'Bitcoin Holdings',
+            'bitcoincash': 'Bitcoin Cash Holdings',
+        }
+    field_order = [
+        'name',
+        'ethereum',
+        'bitcoin',
+        'bitcoincash',
+        ]
+
+    def save(self, commit=True):
+        #Save OneToOne Reference
+        user = super(EditWalletForm, self).save(commit=False)
+        user.save()
+
+        #Get The Specific Wallet To Update
+        #Uses custom form argument
+        wallet = Wallet.objects.get(id=self.myid)
+
+        #Fill Data Model With Form and Other Data
+        wallet.user_id = self.instance
+        wallet.name = self.cleaned_data['name']
+        wallet.ethereum = self.cleaned_data['ethereum'] 
+        wallet.bitcoin = self.cleaned_data['bitcoin']
+        wallet.bitcoincash = self.cleaned_data['bitcoincash']
+
+        #Save To DB
+        if commit:
+            wallet.save()
+        else:
+            print('COMMIT ERROR')
+
+        return wallet    
+
+class CreateWalletForm(forms.ModelForm):
+    class Meta():
+        model = Wallet
+        fields = {
+            'name',
+            'ethereum',
+            'bitcoin',
+            'bitcoincash',
+            }
+        labels = {
+            'name': 'Wallet Name',
+            'ethereum': 'Ethereum Holdings',
+            'bitcoin': 'Bitcoin Holdings',
+            'bitcoincash': 'Bitcoin Cash Holdings',
+        }
+    field_order = [
+        'name',
+        'ethereum',
+        'bitcoin',
+        'bitcoincash',
+        ]
+
+    def save(self, commit=True):
+        #Save OneToOne Reference
+        user = super(EditWalletForm, self).save(commit=False)
+        user.save()
+
+        #Create new wallet
+        wallet = Wallet()
+        
+        #Fill Data Model With Form and Other Data
+        wallet.user_id = self.instance
+        wallet.name = self.cleaned_data['name']
+        wallet.ethereum = self.cleaned_data['ethereum'] 
+        wallet.bitcoin = self.cleaned_data['bitcoin']
+        wallet.bitcoincash = self.cleaned_data['bitcoincash']
+
+        #Save To DB
+        if commit:
+            wallet.save()
+        else:
+            print('COMMIT ERROR')
+
+        return wallet 

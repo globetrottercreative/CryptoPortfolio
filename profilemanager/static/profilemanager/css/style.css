@@ -46,15 +46,33 @@
 
 #editprofile-form {
   margin: 40px auto;
-  max-width: 20rem; }
-  #editprofile-form form {
+  max-width: 40rem; }
+  #editprofile-form #collapseOne form {
     padding: 20px; }
-    #editprofile-form form h5 {
-      text-align: center;
-      color: #47b2cd; }
-    #editprofile-form form p {
+    #editprofile-form #collapseOne form p {
       text-align: center; }
-    #editprofile-form form label {
+    #editprofile-form #collapseOne form label {
       font-weight: 600; }
-
-/*# sourceMappingURL=style.css.map */
+  #editprofile-form #collapseTwo ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px; }
+    #editprofile-form #collapseTwo ul li {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+      #editprofile-form #collapseTwo ul li h3 {
+        text-align: left;
+        display: inline;
+        color: #47b2cd; }
+      #editprofile-form #collapseTwo ul li h5,
+      #editprofile-form #collapseTwo ul li p {
+        display: inline; }
+      #editprofile-form #collapseTwo ul li button {
+        float: right;
+        margin-left: 10px; }
+  #editprofile-form #collapseTwo form {
+    padding: 20px; }
+    #editprofile-form #collapseTwo form p {
+      text-align: center; }
+    #editprofile-form #collapseTwo form label {
+      font-weight: 600; }
