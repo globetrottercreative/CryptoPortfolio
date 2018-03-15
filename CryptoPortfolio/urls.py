@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     path('', include('dash.urls')),
-    path('login/', include('profilemanager.urls')),
     path('admin/', admin.site.urls),
+    path('signup/', include('profilemanager.urls')),
+    url(r'^login/$', login, {'template_name': 'profilemanager/login.html'}),
+    url(r'^logout/$', logout, {'template_name': 'profilemanager/logout.html'}),
 ]

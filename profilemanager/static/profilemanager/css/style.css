@@ -1,0 +1,47 @@
+#login-form .logo-area {
+  text-align: center;
+  margin-top: 60px; }
+  #login-form .logo-area img {
+    max-width: 300px; }
+#login-form .reg-area {
+  text-align: center; }
+#login-form form {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 15rem; }
+  #login-form form h5 {
+    text-align: center;
+    color: #47b2cd; }
+  #login-form form label {
+    font-weight: 600; }
+
+#loggedout-area .logo-area {
+  text-align: center;
+  margin-top: 60px; }
+  #loggedout-area .logo-area img {
+    max-width: 300px; }
+#loggedout-area .message-area {
+  margin-top: 40px;
+  text-align: center; }
+#loggedout-area .login-area {
+  margin-top: 60px;
+  text-align: center; }
+
+#signup-form {
+  margin: 40px auto;
+  max-width: 20rem; }
+  #signup-form .logo-area {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px; }
+    #signup-form .logo-area img {
+      max-width: 300px; }
+  #signup-form form {
+    padding: 20px; }
+    #signup-form form h5 {
+      text-align: center;
+      color: #47b2cd; }
+    #signup-form form label {
+      font-weight: 600; }
+
+/*# sourceMappingURL=style.css.map */

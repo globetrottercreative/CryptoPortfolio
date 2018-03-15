@@ -1,7 +1,6 @@
 from django.conf.urls import url
-from django.contrib.auth.views import login, logout
+from . import views
 
 urlpatterns = [
-    url(r'^$', login, {'template_name': 'profilemanager/login.html'}),
-    url(r'^logout/$', logout, {'template_name': 'profilemanager/logout.html'}),
+    url(r'^$', views.signup, name='signup'),
 ]

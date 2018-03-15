@@ -1,5 +1,10 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} {% load static %}{% block header %}
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="{% static 'profilemanager/css/style.css' %}" /> {% endblock %}{% block body %}
 <div id=login-form>
+    <div class="logo-area">
+        <img class="img-fluid" src="{% static 'profilemanager/img/LogoFull.png' %}" alt="Crypto Portfolio Logo">
+    </div>
     <form method="post" class="border border-primary rounded">
         <h5>Client Login</h5>
         {% csrf_token %}
@@ -8,5 +13,8 @@
         </div>
         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
     </form>
+    <div class="reg-area">
+        <a href="/signup/"><button class="btn btn-danger btn-sm">Register</button></a>
+    </div>
 </div>
 {% endblock %}

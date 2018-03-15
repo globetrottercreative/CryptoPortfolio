@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'dash',
+    'widget_tweaks',
     'profilemanager',
     'django.contrib.admin',
     'django.contrib.auth',

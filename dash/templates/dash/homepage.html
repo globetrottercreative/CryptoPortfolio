@@ -1,6 +1,8 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} {% load static %}{% block header %}
+<title>Crypto Portfolio: Dash</title>
+<link rel="stylesheet" type="text/css" href="{% static 'dash/css/style.css' %}" /> {% endblock %} {% block body %}
 <nav class="sticky-top navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="" width="30" height="30" alt="CryptoDash Logo"></a>
+    <a class="navbar-brand" href="/"><img src="{% static 'dash/img/browsericon.png' %}" width="30" height="30" alt="CryptoDash Logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

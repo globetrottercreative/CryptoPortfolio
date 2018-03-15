@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load widget_tweaks %}{% load static %}{% block header %}
+<title>Logged Out</title>
+<link rel="stylesheet" type="text/css" href="{% static 'profilemanager/css/style.css' %}" /> {% endblock %}{% block body %}
+<div id="signup-form" class="container">
+    <div class="logo-area">
+        <img class="img-fluid" src="{% static 'profilemanager/img/LogoFull.png' %}" alt="Crypto Portfolio Logo">
+    </div>
+    <form class="border border-primary rounded" method="POST">
+        <h5>Sign Up</h5>
+        {% csrf_token %} {% for hidden in form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label> {{ field|add_class:'form-control' }} {% for error in field.errors %}
+            <span class="help-block">{{ error }}</span> {% endfor %}
+        </div>
+        {% endfor %} {{ form.errors }} {{ form.non_field_errors }}
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+#login-form {
+    .logo-area {
+        text-align: center;
+        margin-top: 60px;
+        img {
+            max-width: 300px;
+        }
+    }
+    .reg-area {
+        text-align: center;
+    }
+    form {
+        margin: 40px auto;
+        padding: 20px;
+        ;
+        max-width: 15rem;
+        h5 {
+            text-align: center;
+            color: #47b2cd;
+        }
+        label {
+            font-weight: 600;
+        }
+    }
+}
+
+#loggedout-area {
+    .logo-area {
+        text-align: center;
+        margin-top: 60px;
+        img {
+            max-width: 300px;
+        }
+    }
+    .message-area {
+        margin-top: 40px;
+        text-align: center;
+    }
+    .login-area {
+        margin-top: 60px;
+        text-align: center;
+    }
+}
+
+#signup-form {
+    margin: 40px auto;
+    max-width: 20rem;
+    .logo-area {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        img {
+            max-width: 300px;
+        }
+    }
+    form {
+        padding: 20px;
+        h5 {
+            text-align: center;
+            color: #47b2cd;
+        }
+        label {
+            font-weight: 600;
+        }
+    }
+}

@@ -1,5 +1,15 @@
-{% extends 'base.html' %} {% block body %}
-<div id=logoutform>
-    <h4>Logged Out</h4>
+{% extends 'base.html' %} {% load static %}{% block header %}
+<title>Logged Out</title>
+<link rel="stylesheet" type="text/css" href="{% static 'profilemanager/css/style.css' %}" /> {% endblock %}{% block body %}
+<div id=loggedout-area>
+    <div class="logo-area">
+        <img class="img-fluid" src="{% static 'profilemanager/img/LogoFull.png' %}" alt="Crypto Portfolio Logo">
+    </div>
+    <div class="message-area">
+        <h3>You have been logged out.</h3>
+    </div>
+    <div class="login-area">
+        <a class="btn btn-danger btn-sm" href="/login/">Login</a>
+    </div>
 </div>
 {% endblock %}
