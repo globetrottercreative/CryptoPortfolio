@@ -44,4 +44,17 @@
     #signup-form form label {
       font-weight: 600; }
 
+#editprofile-form {
+  margin: 40px auto;
+  max-width: 20rem; }
+  #editprofile-form form {
+    padding: 20px; }
+    #editprofile-form form h5 {
+      text-align: center;
+      color: #47b2cd; }
+    #editprofile-form form p {
+      text-align: center; }
+    #editprofile-form form label {
+      font-weight: 600; }
+
 /*# sourceMappingURL=style.css.map */

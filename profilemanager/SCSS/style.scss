@@ -64,3 +64,21 @@
         }
     }
 }
+
+#editprofile-form {
+    margin: 40px auto;
+    max-width: 20rem;
+    form {
+        padding: 20px;
+        h5 {
+            text-align: center;
+            color: #47b2cd;
+        }
+        p {
+            text-align: center;
+        }
+        label {
+            font-weight: 600;
+        }
+    }
+}

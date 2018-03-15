@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load widget_tweaks %}{% block body %}
+{% extends 'base.html' %} {% load widget_tweaks %}{% load static %}{% block header %}
+<title>Edit Profile</title>
+<link rel="stylesheet" type="text/css" href="{% static 'profilemanager/css/style.css' %}" /> {% endblock %}{% block body %}
 <div id="editprofile-form" class="container">
     <form class="border border-primary rounded" method="POST">
         <h5>Edit Profile</h5>
