@@ -2,6 +2,9 @@
 <title>Edit Profile</title>
 <link rel="stylesheet" type="text/css" href="{% static 'profilemanager/css/style.css' %}" /> {% endblock %}{% block body %}
 <div id="editprofile-form" class="container">
+    <div id="edit-portfolio-header">
+        <h2>Edit Portfolio</h2>
+    </div>
     <div id="accordion">
         <div class="card">
             <div class="card-header" id="headingOne">
@@ -11,7 +14,7 @@
                 </button>
                 </h5>
             </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                     <form class="border border-primary rounded" method="POST">
                         <p><small>Edit your profile information</small></p>
@@ -21,7 +24,7 @@
                             <span class="help-block">{{ error }}</span> {% endfor %}
                         </div>
                         {% endfor %}
-                        <button type="submit" name="profile_post_button" class="btn btn-danger btn-sm">Save</button>
+                        <button type="submit" name="profile_post_button" class="btn btn-primary btn-sm">Save</button>
                     </form>
                 </div>
             </div>
@@ -37,12 +40,34 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
                     <p><small>Add/Remove your wallets or change the amount of cryptocurrency you hold</small></p>
-                    <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#addWalletModal">Add New Wallet</button>
+                    <form id="new-btn-form" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name="newWallet_button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#addWalletModal">Add New Wallet</button>
+                    </form>
                     <ul>
                         {% for wallet in wallets %}
                         <li>
                             <h3>{{wallet.name}}</h3>
-                            <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{wallet.pk}}Modal">Delete</button>
+                            <div class="modal fade" id="delete{{wallet.pk}}Modal" tabindex="-1" role="dialog" aria-labelledby="delete{{wallet.pk}}ModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form class="border border-primary rounded" method="POST">
+                                            {% csrf_token %}
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="delete{{wallet.pk}}ModalLabel">Delete {{wallet.name}}?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-outline-info" data-dismiss="modal">Keep</button>
+                                                <button type="submit" name="{{wallet.pk}}_delete_wallet" class="btn btn-outline-danger">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit{{wallet.pk}}Modal">Edit</button>
                             <div class="modal fade" id="edit{{wallet.pk}}Modal" tabindex="-1" role="dialog" aria-labelledby="edit{{wallet.pk}}ModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -83,7 +108,6 @@
                         </li>
                         {% endfor %}
                     </ul>
-
                 </div>
             </div>
         </div>
@@ -91,18 +115,30 @@
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Collapsible Group Item #3
+                Exchanges
                 </button>
                 </h5>
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                    on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                    raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <form class="border border-primary rounded" method="POST">
+                        <p><small>Change the exchanges you are currently trading with</small></p>
+                        {% csrf_token %} {% for hidden in exchange_form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in exchange_form.visible_fields %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                            </label>{{ field|add_class:'form-control' }} {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span> {% endfor %}
+                        </div>
+                        {% endfor %} {{ exchange_form.errors }} {{ exchange_form.non_field_errors }}
+                        <button type="submit" class="btn btn-sm btn-outline-primary" name="save_exchange_button">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+    <div id="back-button">
+        <a href="../"><button class="btn btn-warning">Back</button></a>
     </div>
 </div>
 {% endblock %}

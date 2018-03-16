@@ -129,3 +129,19 @@ STATIC_URL = '/static/'
 #Login
 LOGIN_REDIRECT_URL = "/"
 
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+# Beat Schedule
+from celery.schedules import crontab
+CELERY_BEAT_SCHEDULE = {
+    'task_number_one': {
+        'task': 'dashboard.tasks.task_number_one',
+        'schedule': crontab(minute='*/1'),
+    },
+}

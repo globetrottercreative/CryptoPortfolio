@@ -68,6 +68,15 @@
 #editprofile-form {
     margin: 40px auto;
     max-width: 40rem;
+    #edit-portfolio-header {
+        text-align: center;
+        color: #47b2cd;
+        margin-bottom: 40px;
+    }
+    #back-button {
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
     #collapseOne {
         form {
             padding: 20px;
@@ -80,6 +89,13 @@
         }
     }
     #collapseTwo {
+        p {
+            text-align: center;
+        }
+        #new-btn-form {
+            padding: 0px;
+            margin-bottom: 20px;
+        }
         ul {
             list-style-type: none;
             padding: 0px;
@@ -110,6 +126,11 @@
             label {
                 font-weight: 600;
             }
+        }
+    }
+    #collapseThree {
+        form {
+            padding: 20px;
         }
     }
 }

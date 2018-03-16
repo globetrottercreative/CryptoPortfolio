@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from profilemanager.models import UserProfile, Wallet
+from profilemanager.models import UserProfile, Wallet, ExchangesTraded
 
 class CreateUserForm(UserCreationForm):
+    print('n create form')
     email = forms.EmailField(required=True)
     class Meta():
         model = User
@@ -141,47 +142,38 @@ class EditWalletForm(forms.ModelForm):
 
         return wallet    
 
-class CreateWalletForm(forms.ModelForm):
+class EditExchangeForm(forms.ModelForm):
     class Meta():
-        model = Wallet
+        model = ExchangesTraded
         fields = {
-            'name',
-            'ethereum',
-            'bitcoin',
-            'bitcoincash',
+            'exchange_one',
+            'exchange_two',
+            'exchange_three',
             }
         labels = {
-            'name': 'Wallet Name',
-            'ethereum': 'Ethereum Holdings',
-            'bitcoin': 'Bitcoin Holdings',
-            'bitcoincash': 'Bitcoin Cash Holdings',
+            'exchange_one': 'Exchange One',
+            'exchange_two': 'Exchange Two',
+            'exchange_three': 'Exchange Three',
         }
     field_order = [
-        'name',
-        'ethereum',
-        'bitcoin',
-        'bitcoincash',
+        'exchange_one',
+        'exchange_two',
+        'exchange_three',
         ]
 
     def save(self, commit=True):
         #Save OneToOne Reference
-        user = super(EditWalletForm, self).save(commit=False)
-        user.save()
-
-        #Create new wallet
-        wallet = Wallet()
-        
-        #Fill Data Model With Form and Other Data
-        wallet.user_id = self.instance
-        wallet.name = self.cleaned_data['name']
-        wallet.ethereum = self.cleaned_data['ethereum'] 
-        wallet.bitcoin = self.cleaned_data['bitcoin']
-        wallet.bitcoincash = self.cleaned_data['bitcoincash']
+        profile = super(EditExchangeForm, self).save(commit=False)
+        profile.save()
+        exch = ExchangesTraded.objects.get(user_id=profile)
+        exch.exchange_one = self.cleaned_data['exchange_one']
+        exch.exchange_two = self.cleaned_data['exchange_two'] 
+        exch.exchange_three = self.cleaned_data['exchange_three']
 
         #Save To DB
         if commit:
-            wallet.save()
+            exch.save()
         else:
             print('COMMIT ERROR')
 
-        return wallet 
+        return exch    

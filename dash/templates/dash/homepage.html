@@ -1,25 +1,22 @@
-{% extends 'base.html' %} {% load static %}{% block header %}
+{% extends 'base.html' %} {% load widget_tweaks %}{% load static %}{% block header %}
 <title>Crypto Portfolio: Dash</title>
 <link rel="stylesheet" type="text/css" href="{% static 'dash/css/style.css' %}" /> {% endblock %} {% block body %}
-<nav class="sticky-top navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="{% static 'dash/img/browsericon.png' %}" width="30" height="30" alt="CryptoDash Logo"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/home/">Home</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/editprofile/">Profile</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/logout/">Logout</a>
-            </li>
-        </ul>
-        <a href="/"><button class="btn btn-outline-warning btn-sm">Refresh</button></a>
+<div id="main-home">
+    <div id="heading" class="container-fluid">
+        {% if Profile.firstname == 'New' %}
+        <h1 class="display-4">Welcome to your new dashboard!</h1>
+        <small>Change your settings in your <a href="/editprofile/">profile</a></small> {% else %}
+        <h1 class="display-4">Hi {{Profile.firstname}} </h1>
+        {% endif %}
     </div>
-</nav>
+    <div id="summary-home" class="container-fluid">
+        {% block test %} {% endblock %}
+    </div>
+    <div id="detail-home" class="container-fluid">
+
+    </div>
+    <div id="news-home" class="container-fluid">
+
+    </div>
+</div>
 {% endblock %}

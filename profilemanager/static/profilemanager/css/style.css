@@ -47,12 +47,24 @@
 #editprofile-form {
   margin: 40px auto;
   max-width: 40rem; }
+  #editprofile-form #edit-portfolio-header {
+    text-align: center;
+    color: #47b2cd;
+    margin-bottom: 40px; }
+  #editprofile-form #back-button {
+    margin-top: 20px;
+    margin-bottom: 40px; }
   #editprofile-form #collapseOne form {
     padding: 20px; }
     #editprofile-form #collapseOne form p {
       text-align: center; }
     #editprofile-form #collapseOne form label {
       font-weight: 600; }
+  #editprofile-form #collapseTwo p {
+    text-align: center; }
+  #editprofile-form #collapseTwo #new-btn-form {
+    padding: 0px;
+    margin-bottom: 20px; }
   #editprofile-form #collapseTwo ul {
     list-style-type: none;
     padding: 0px;
@@ -76,3 +88,5 @@
       text-align: center; }
     #editprofile-form #collapseTwo form label {
       font-weight: 600; }
+  #editprofile-form #collapseThree form {
+    padding: 20px; }

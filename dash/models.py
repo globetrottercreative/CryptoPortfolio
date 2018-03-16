@@ -4,7 +4,7 @@ from django.db import models
 class Crypto(models.Model):
     name = models.CharField(max_length=50, default='', unique=True)
     code = models.CharField(max_length=4, default='', unique=True)
-    code_alt = models.CharField(max_length=4, default='', unique=True)
+    code_alt = models.CharField(max_length=4, default='', unique=True, blank=True)
     def __str__(self):
         return self.name
 '''
@@ -65,3 +65,13 @@ class SpotPrice(models.Model):
     vol_currency = models.FloatField(default=0)
     last_price = models.FloatField(default=0)
 
+#Exchange Data Model
+class Exchange(models.Model):
+    name = models.CharField(max_length=100, default='')
+    website_url = models.CharField(max_length=100, default='')
+    country_origin = models.CharField(max_length=100, default='')
+    api_url = models.CharField(max_length=100, default='')
+    api_key = models.CharField(max_length=100, default='', blank=True)
+    api_secret = models.CharField(max_length=100, default='', blank=True)
+    def __str__(self):
+        return self.name

@@ -14,11 +14,30 @@
 
 <body>
     {% if request.user.is_authenticated %}
-    <!-- Then show authenticated stuff -->
+    <nav class="sticky-top navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="/"><img src="{% static 'dash/img/browsericon.png' %}" width="30" height="30" alt="CryptoDash Logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/editprofile/">Profile</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout/">Logout</a>
+                </li>
+            </ul>
+            <a href="/"><button class="btn btn-outline-warning btn-sm">Refresh</button></a>
+        </div>
+    </nav>
     {% else %}
     <!-- Else dont show authenticated stuff -->
-    {% endif %}
-    {% block body %} {% endblock %}
+    {% endif %} {% block body %} {% endblock %}
     <script src="{% static 'dash/js/jquery.min.js' %}"></script>
     <script src="{% static 'dash/js/popper.min.js' %}"></script>
     <script src="{% static 'dash/js/bootstrap.min.js' %}"></script>
