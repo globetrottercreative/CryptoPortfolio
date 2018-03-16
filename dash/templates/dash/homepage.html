@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load widget_tweaks %}{% load static %}{% block header %}
+{% extends 'base.html' %}{% load widget_tweaks %}{% load static %}{% block header %}
 <title>Crypto Portfolio: Dash</title>
 <link rel="stylesheet" type="text/css" href="{% static 'dash/css/style.css' %}" /> {% endblock %} {% block body %}
 <div id="main-home">
@@ -10,7 +10,6 @@
         {% endif %}
     </div>
     <div id="summary-home" class="container-fluid">
-        {% block test %} {% endblock %}
     </div>
     <div id="detail-home" class="container-fluid">
 
