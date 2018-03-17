@@ -16,10 +16,28 @@
                 <div class="col top_col_1">
                     <img class="img-fluid" src="{% static 'dash/img/' %}{{crypto.code}}.png" alt="Cryptocurrency Logo">
                     <h1 class="display-4">{{crypto}}</h1>
-                </div>
-                <div class="col top_col_2">
-                    <a href="https://github.com/ethereum" target="_blank"><small>Repo</small></a>
-                    <a href="https://www.ethereum.org" target="_blank"><small>Website</small></a>
+                    <ul>
+                        <li>
+                            <small>Avg. Price</small>
+                            <h4>${{crypto.cmc_avg_price}}</h4>
+                        </li>
+                        <li>
+                            <small>% Change (24hr)</small>
+                            <h4>{{crypto.cmc_pct_change24}}%</h4>
+                        </li>
+                        <li>
+                            <small>% Change (7d)</small>
+                            <h4>{{crypto.cmc_pct_change7d}}%</h4>
+                        </li>
+                        <li>
+                            <small>Total Supply</small>
+                            <h4>{{crypto.cmc_total_sply}}</h4>
+                        </li>
+                        <li>
+                            <small>Market Cap</small>
+                            <h4>${{crypto.cmc_marketcap}}</h4>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div id="second-row" class="row no-gutters">
@@ -55,7 +73,7 @@
                                         <td class="center bold">${{spot.high_day}}</td>
                                     </tr>
                                 </table>
-                                <p class="card-text"><small class="text-muted">Server Timestamp: {{spot.timestamp}}</small></p>
+                                <p class="card-text"><small class="text-muted">{{spot.timestamp}}</small></p>
                             </div>
                         </div>
                     </div>

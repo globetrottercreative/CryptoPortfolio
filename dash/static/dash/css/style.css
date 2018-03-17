@@ -10,18 +10,30 @@
   margin: 40px;
   border: 1px double #47b2cd; }
   #summary-home #spot-card #top-row {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 20px;
     margin-right: 20px; }
+    #summary-home #spot-card #top-row .top_col_1 h1,
+    #summary-home #spot-card #top-row .top_col_1 h3 {
+      margin: 0px; }
     #summary-home #spot-card #top-row .top_col_1 .display-4 {
       font-size: 1.5rem;
       display: inline-block; }
     #summary-home #spot-card #top-row .top_col_1 img {
-      max-width: 48px; }
+      max-width: 48px;
+      margin-bottom: 10px; }
+    #summary-home #spot-card #top-row .top_col_1 ul {
+      list-style-type: none;
+      display: inline-block;
+      margin: 0px;
+      padding: 0px; }
+      #summary-home #spot-card #top-row .top_col_1 ul li {
+        display: inline-block;
+        margin-left: 20px; }
     #summary-home #spot-card #top-row .top_col_2 {
       text-align: right; }
-      #summary-home #spot-card #top-row .top_col_2 a {
+      #summary-home #spot-card #top-row .top_col_2 small {
         display: block; }
   #summary-home #spot-card #second-row {
     margin-top: 20px; }
@@ -30,7 +42,7 @@
       padding: 0px; }
     #summary-home #spot-card #second-row .card {
       margin: 0px auto;
-      width: 13rem;
+      width: 15rem;
       border-style: none; }
       #summary-home #spot-card #second-row .card .card-img-top {
         margin: 0px auto;

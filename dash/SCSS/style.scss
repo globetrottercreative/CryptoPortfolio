@@ -18,22 +18,37 @@
         margin: 40px;
         border: 1px double #47b2cd;
         #top-row {
-            margin-top: 20px;
+            margin-top: 10px;
             margin-bottom: 10px;
             margin-left: 20px;
             margin-right: 20px;
             .top_col_1 {
+                h1,
+                h3 {
+                    margin: 0px;
+                }
                 .display-4 {
                     font-size: 1.5rem;
                     display: inline-block;
                 }
                 img {
                     max-width: 48px;
+                    margin-bottom: 10px;
+                }
+                ul {
+                    list-style-type: none;
+                    display: inline-block;
+                    margin: 0px;
+                    padding: 0px;
+                    li {
+                        display: inline-block;
+                        margin-left: 20px;
+                    }
                 }
             }
             .top_col_2 {
                 text-align: right;
-                a {
+                small {
                     display: block;
                 }
             }
@@ -46,7 +61,7 @@
             }
             .card {
                 margin: 0px auto;
-                width: 13rem;
+                width: 15rem;
                 border-style: none;
                 .card-img-top {
                     margin: 0px auto;
