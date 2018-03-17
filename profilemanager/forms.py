@@ -41,7 +41,6 @@ class EditProfileForm(forms.ModelForm):
     CURRENCY_CHOICES= [
         ('NZD', 'NZD'),
         ('USD', 'USD'),
-        ('AUD', 'AUD'),
         ]
     currency = forms.CharField(widget=forms.Select(choices=CURRENCY_CHOICES))
     class Meta():
@@ -83,6 +82,10 @@ class EditProfileForm(forms.ModelForm):
         profile.firstname = self.cleaned_data['firstname']
         profile.lastname = self.cleaned_data['lastname'] 
         profile.currency = self.cleaned_data['currency']
+        if profile.currency == 'NZD':
+            profile.currency_alt = 'NZDT'
+        elif profile.currency == 'USD':
+            profile.currency_alt = 'USDT'
 
         #Save To DB
         if commit:

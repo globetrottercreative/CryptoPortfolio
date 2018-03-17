@@ -9,7 +9,61 @@
         <h1 class="display-4">Hi {{Profile.firstname}} </h1>
         {% endif %}
     </div>
-    <div id="summary-home" class="container-fluid">
+    <div id="summary-home">
+        {% for crypto in cryptos %}
+        <div id="spot-card">
+            <div id="top-row" class="row no-gutters">
+                <div class="col top_col_1">
+                    <img class="img-fluid" src="{% static 'dash/img/' %}{{crypto.code}}.png" alt="Cryptocurrency Logo">
+                    <h1 class="display-4">{{crypto}}</h1>
+                </div>
+                <div class="col top_col_2">
+                    <a href="https://github.com/ethereum" target="_blank"><small>Repo</small></a>
+                    <a href="https://www.ethereum.org" target="_blank"><small>Website</small></a>
+                </div>
+            </div>
+            <div id="second-row" class="row no-gutters">
+                {% for exchange in exchanges %} {% for spot in spots %} {% if spot.crypto.name == crypto.name and spot.source_data == exchange.name %}
+                <div class="col">
+                    <div class="container-fluid">
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="{% static 'dash/img/' %}{{exchange.name}}.png" alt="Card image cap">
+                            <div class="card-body">
+                                <table>
+                                    <tr class="vol-rows">
+                                        <td><small>24HR Vol(C)</small></td>
+                                        <td class="right bold">C{{spot.vol_crypto}}</td>
+                                    </tr>
+                                    <tr class="vol-rows">
+                                        <td><small>24HR Vol($)</small></td>
+                                        <td class="right bold">${{spot.vol_currency}}</td>
+                                    </tr>
+                                    <tr class="avg_row_title">
+                                        <td colspan="2" class="center"><small>Price</small></td>
+                                    </tr>
+                                    <tr class="avg_row_data">
+                                        <td colspan="2" class="center">
+                                            <h1 class="display-4">${{spot.avg_day}}</h1>
+                                        </td>
+                                    </tr>
+                                    <tr class="lowhi_row_titles">
+                                        <td class="center"><small>Days Low</small></td>
+                                        <td class="center"><small>Days Hi</small></td>
+                                    </tr>
+                                    <tr class="lowhi_row_data">
+                                        <td class="center bold">${{spot.low_day}}</td>
+                                        <td class="center bold">${{spot.high_day}}</td>
+                                    </tr>
+                                </table>
+                                <p class="card-text"><small class="text-muted">Server Timestamp: {{spot.timestamp}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}{% endfor %}{% endfor %}
+            </div>
+        </div>
+        {% endfor %}
     </div>
     <div id="detail-home" class="container-fluid">
 

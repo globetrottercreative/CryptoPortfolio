@@ -56,14 +56,16 @@ class SpotPrice(models.Model):
     crypto = models.ForeignKey(Crypto, on_delete=models.CASCADE, blank=True)
     currency = models.CharField(max_length=4, default='')
     timestamp = models.DateTimeField()
-    source_api = models.CharField(max_length=50, default='', unique=True)
-    source_data = models.CharField(max_length=50, default='', unique=True)
+    source_api = models.CharField(max_length=50, default='')
+    source_data = models.CharField(max_length=50, default='')
     avg_day = models.FloatField(default=0)
     high_day = models.FloatField(default=0)
     low_day = models.FloatField(default=0)
     vol_crypto = models.FloatField(default=0)
     vol_currency = models.FloatField(default=0)
     last_price = models.FloatField(default=0)
+    def __str__(self):
+        return str(self.timestamp)
 
 #Exchange Data Model
 class Exchange(models.Model):

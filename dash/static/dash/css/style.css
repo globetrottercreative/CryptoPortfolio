@@ -1,5 +1,53 @@
+#main-home .container-fluid {
+  padding: 0px; }
 #main-home #heading small {
   margin: 20px; }
 #main-home #heading .display-4 {
   font-size: 2rem;
   margin: 20px; }
+
+#summary-home #spot-card {
+  margin: 40px;
+  border: 1px double #47b2cd; }
+  #summary-home #spot-card #top-row {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px; }
+    #summary-home #spot-card #top-row .top_col_1 .display-4 {
+      font-size: 1.5rem;
+      display: inline-block; }
+    #summary-home #spot-card #top-row .top_col_1 img {
+      max-width: 48px; }
+    #summary-home #spot-card #top-row .top_col_2 {
+      text-align: right; }
+      #summary-home #spot-card #top-row .top_col_2 a {
+        display: block; }
+  #summary-home #spot-card #second-row {
+    margin-top: 20px; }
+    #summary-home #spot-card #second-row .container,
+    #summary-home #spot-card #second-row col {
+      padding: 0px; }
+    #summary-home #spot-card #second-row .card {
+      margin: 0px auto;
+      width: 13rem;
+      border-style: none; }
+      #summary-home #spot-card #second-row .card .card-img-top {
+        margin: 0px auto;
+        max-width: 100px; }
+      #summary-home #spot-card #second-row .card table {
+        border-style: solid;
+        border-width: 1px;
+        border-color: darkgrey;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        width: 100%; }
+        #summary-home #spot-card #second-row .card table .avg_row_data .display-4 {
+          font-size: 2.2rem; }
+      #summary-home #spot-card #second-row .card .bold {
+        font-weight: bold; }
+      #summary-home #spot-card #second-row .card .right {
+        text-align: right; }
+      #summary-home #spot-card #second-row .card .center {
+        text-align: center; }

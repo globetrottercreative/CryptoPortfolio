@@ -9,6 +9,7 @@ class UserProfile(models.Model):
     firstname = models.CharField(max_length=100, default='New')
     lastname = models.CharField(max_length=100, default='User')
     currency = models.CharField(max_length=4, default='NZD')
+    currency_alt = models.CharField(max_length=4, default='NZDT')
 
     def __str__(self):
         return self.firstname
