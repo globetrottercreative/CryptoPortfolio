@@ -41,3 +41,23 @@ class Cry_GetMarketSummary():
         print(url)
         r = requests.get(url)
         return r
+
+'''
+Takes a CoinMarketCap Spot Price API URL, Returns JSON Package
+'''
+
+class Coin_GetMarketSummary():
+    def __init__(self, url, cur, cyp_name):
+        self._URL = url
+        self.Crypto = cyp_name
+        self.Currency = cur
+
+    def run(self):
+            
+        url = self._URL
+        url += self.Crypto
+        url += '/?convert='
+        url += self.Currency
+        print(url)
+        r = requests.get(url)
+        return r

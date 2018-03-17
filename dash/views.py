@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from profilemanager.models import UserProfile, ExchangesTraded
-from dash.apis import IR_GetMarketSummary, Cry_GetMarketSummary
+from dash.apis import IR_GetMarketSummary, Cry_GetMarketSummary, Coin_GetMarketSummary
 from dash.models import SpotPrice, Exchange, Crypto
 import json, requests
 from django.utils import timezone
@@ -163,7 +163,89 @@ def home(request):
                 sp.vol_currency = "%.2f" % response['BaseVolume']
                 sp.last_price = "%.2f" % response['LastPrice']
                 sp.save()
+            
+            '''
+            CoinMarketCap Spot Calls
+            '''
+            cmc_conv1 = ''
+            if crypto.code == 'ETH':
+                cmc_conv1 = 'ethereum'
+            elif crypto.code == 'BTC':
+                cmc_conv1 = 'bitcoin'
+            elif crypto.code == 'BCH':
+                cmc_conv1 = 'bitcoincash'
 
+            if (markets.exchange_one is not None and 
+                markets.exchange_one.name == 'CoinMarketCap'):
+                r = Coin_GetMarketSummary(markets.exchange_one.api_url, profile.currency_alt, cmc_conv1).run()
+                # Clear DB of past Spot Data
+                SpotPrice.objects.filter(source_data=markets.exchange_one.name, crypto=crypto).delete()
+                #Convert Request Response
+                response = r.json()
+
+                # Put response data in DB
+                sp = SpotPrice()
+                sp.crypto = crypto
+                sp.currency = profile.currency
+                sp.timestamp = timezone.now()
+                sp.source_api = markets.exchange_one.api_url
+                sp.source_data = markets.exchange_one.name
+                sp.avg_day = "%.2f" % response['price_nzd']
+                sp.high_day = 0
+                sp.low_day = 0
+                sp.vol_crypto = 0
+                sp.vol_currency = "%.2f" % response['24h_volume_nzd']
+                sp.last_price = 0
+                sp.save()
+
+            if (markets.exchange_two is not None and 
+                markets.exchange_two.name == 'CoinMarketCap'):
+                r = Coin_GetMarketSummary(markets.exchange_two.api_url, profile.currency_alt, cmc_conv1).run()
+                
+                # Clear DB of past Spot Data
+                SpotPrice.objects.filter(source_data=markets.exchange_two.name, crypto=crypto).delete()
+                #Convert Request Response
+         
+                response = r.json()
+                # Put response data in DB
+                sp = SpotPrice()
+                sp.crypto = crypto
+                sp.currency = profile.currency
+                sp.timestamp = timezone.now()
+                sp.source_api = markets.exchange_one.api_url
+                sp.source_data = markets.exchange_one.name
+                sp.avg_day = "%.2f" % response['price_nzd']
+                sp.high_day = 0
+                sp.low_day = 0
+                sp.vol_crypto = 0
+                sp.vol_currency = "%.2f" % response['24h_volume_nzd']
+                sp.last_price = 0
+                sp.save()
+
+            if (markets.exchange_three is not None and 
+                markets.exchange_three.name == 'CoinMarketCap'):
+                
+                r = Coin_GetMarketSummary(markets.exchange_three.api_url, profile.currency, cmc_conv1).run()
+                # Clear DB of past Spot Data
+                SpotPrice.objects.filter(source_data=markets.exchange_three.name, crypto=crypto).delete()
+                #Convert Request Response
+                response = r.json()
+                print(response)
+
+                # Put response data in DB
+                sp = SpotPrice()
+                sp.crypto = crypto
+                sp.currency = profile.currency
+                sp.timestamp = timezone.now()
+                sp.source_api = markets.exchange_one.api_url
+                sp.source_data = markets.exchange_one.name
+                sp.avg_day = "%.2f" % float(response['price_nzd'])
+                sp.high_day = 0
+                sp.low_day = 0
+                sp.vol_crypto = 0
+                sp.vol_currency = "%.2f" % response['24h_volume_nzd']
+                sp.last_price = 0
+                sp.save()
 
         _spots = SpotPrice.objects.all()
         _cryptos = Crypto.objects.all()
