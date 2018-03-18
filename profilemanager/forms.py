@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from profilemanager.models import UserProfile, Wallet, ExchangesTraded
+from profilemanager.models import UserProfile, Wallet
 
 class CreateUserForm(UserCreationForm):
     print('n create form')
@@ -143,40 +143,4 @@ class EditWalletForm(forms.ModelForm):
         else:
             print('COMMIT ERROR')
 
-        return wallet    
-
-class EditExchangeForm(forms.ModelForm):
-    class Meta():
-        model = ExchangesTraded
-        fields = {
-            'exchange_one',
-            'exchange_two',
-            'exchange_three',
-            }
-        labels = {
-            'exchange_one': 'Exchange One',
-            'exchange_two': 'Exchange Two',
-            'exchange_three': 'Exchange Three',
-        }
-    field_order = [
-        'exchange_one',
-        'exchange_two',
-        'exchange_three',
-        ]
-
-    def save(self, commit=True):
-        #Save OneToOne Reference
-        profile = super(EditExchangeForm, self).save(commit=False)
-        profile.save()
-        exch = ExchangesTraded.objects.get(user_id=profile)
-        exch.exchange_one = self.cleaned_data['exchange_one']
-        exch.exchange_two = self.cleaned_data['exchange_two'] 
-        exch.exchange_three = self.cleaned_data['exchange_three']
-
-        #Save To DB
-        if commit:
-            exch.save()
-        else:
-            print('COMMIT ERROR')
-
-        return exch    
+        return wallet     

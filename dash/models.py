@@ -5,6 +5,13 @@ class Crypto(models.Model):
     name = models.CharField(max_length=50, default='', unique=True)
     code = models.CharField(max_length=4, default='', unique=True)
     code_alt = models.CharField(max_length=4, default='', unique=True, blank=True)
+    def __str__(self):
+        return self.name
+
+# Cryptocurrency Arverages Data Model
+class CryptoAverage(models.Model):
+    fiat = models.CharField(max_length=50, default='')
+    crypto = models.ForeignKey(Crypto, on_delete=models.CASCADE, blank=True)
     cmc_marketcap = models.CharField(max_length=50, default='', blank=True)
     cmc_rank = models.CharField(max_length=50, default='', blank=True)
     cmc_pct_change24 = models.CharField(max_length=50, default='', blank=True)
@@ -23,19 +30,19 @@ class FiatCurrency(models.Model):
         return self.name
 
 # Daily Crytocurrency Data Point Data Model
-class DailyPrice(models.Model):
+class HourlyPrice(models.Model):
     crypto = models.ForeignKey(Crypto, on_delete=models.CASCADE, blank=True)
     currency = models.CharField(max_length=4, default='')
-    avg_price = models.FloatField(default=0)
+    avg_price = models.CharField(max_length=50, default='')
     day_start = models.DateTimeField()
     day_end = models.DateTimeField()
-    source_api = models.CharField(max_length=50, default='', unique=True)
-    source_data = models.CharField(max_length=50, default='', unique=True)
-    open_value = models.FloatField(default=0)
-    high_value = models.FloatField(default=0)
-    low_value = models.FloatField(default=0)
-    close_value = models.FloatField(default=0)
-    volume = models.FloatField(default=0)
+    source_api = models.CharField(max_length=50, default='')
+    source_data = models.CharField(max_length=50, default='')
+    open_value = models.CharField(max_length=50, default='')
+    high_value = models.CharField(max_length=50, default='')
+    low_value = models.CharField(max_length=50, default='')
+    close_value = models.CharField(max_length=50, default='')
+    volume = models.CharField(max_length=50, default='')
 
 # Snapshot Crytocurrency Data Point Data Model
 class SpotPrice(models.Model):

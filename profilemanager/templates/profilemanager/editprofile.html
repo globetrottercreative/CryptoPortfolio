@@ -16,7 +16,7 @@
             </div>
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
-                    <form class="border border-primary rounded" method="POST">
+                    <form method="POST">
                         <p><small>Edit your profile information</small></p>
                         {% csrf_token %} {% for hidden in form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in form.visible_fields %}
                         <div class="form-group {{field.label}}">
@@ -24,7 +24,7 @@
                             <span class="help-block">{{ error }}</span> {% endfor %}
                         </div>
                         {% endfor %}
-                        <button type="submit" name="profile_post_button" class="btn btn-primary btn-sm">Save</button>
+                        <button type="submit" name="profile_post_button" class="btn btn-outline-primary btn-sm">Save</button>
                     </form>
                 </div>
             </div>
@@ -111,34 +111,9 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Exchanges
-                </button>
-                </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                    <form class="border border-primary rounded" method="POST">
-                        <p><small>Change the exchanges you are currently trading with</small></p>
-                        {% csrf_token %} {% for hidden in exchange_form.hidden_fields %} {{ hidden }} {% endfor %} {% for field in exchange_form.visible_fields %}
-                        <div class="form-group">
-                            <label for="{{ field.id_for_label }}">
-                                {{ field.label }}
-                            </label>{{ field|add_class:'form-control' }} {% for error in field.errors %}
-                            <span class="help-block">{{ error }}</span> {% endfor %}
-                        </div>
-                        {% endfor %} {{ exchange_form.errors }} {{ exchange_form.non_field_errors }}
-                        <button type="submit" class="btn btn-sm btn-outline-primary" name="save_exchange_button">Save</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <div id="back-button">
-        <a href="../"><button class="btn btn-warning">Back</button></a>
+        <a href="../"><button class="btn btn-sm btn-outline-warning">Back</button></a>
     </div>
 </div>
 {% endblock %}

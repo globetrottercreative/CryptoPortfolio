@@ -3,26 +3,53 @@
         padding: 0px;
     }
     #heading {
-        small {
-            margin: 20px;
+        margin-top: 60px;
+        text-align: center;
+        img {
+            max-width: 64px;
+        }
+        img:hover {
+            max-width: 76px;
         }
         .display-4 {
             font-size: 2rem;
-            margin: 20px;
+            color: darkslateblue;
         }
+        small {}
     }
 }
 
 #summary-home {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    .snapshot_heading {
+        text-align: center;
+        margin-bottom: 20px;
+        img {
+            max-width: 32px;
+        }
+        .display-4 {
+            margin: 0px;
+            display: inline-block;
+            font-size: 1.4rem;
+        }
+        hr {
+            border-color: #829CBC;
+        }
+    }
     #spot-card {
-        margin: 40px;
-        border: 1px double #47b2cd;
+        display: inline-block;
+        margin: 10px;
+        padding: 10px;
+        max-width: 26rem;
+        border: 1px double #829CBC;
         #top-row {
             margin-top: 10px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            margin-right: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
             .top_col_1 {
+                text-align: left;
                 h1,
                 h3 {
                     margin: 0px;
@@ -30,6 +57,11 @@
                 .display-4 {
                     font-size: 1.5rem;
                     display: inline-block;
+                    color: darkslateblue;
+                }
+                .total_cap {
+                    display: inline-block;
+                    margin-left: 40px;
                 }
                 img {
                     max-width: 48px;
@@ -54,23 +86,25 @@
             }
         }
         #second-row {
-            margin-top: 20px;
             .container,
             col {
                 padding: 0px;
             }
             .card {
                 margin: 0px auto;
-                width: 15rem;
+                width: 12rem;
                 border-style: none;
                 .card-img-top {
                     margin: 0px auto;
                     max-width: 100px;
                 }
+                .card-body {
+                    padding: 0px;
+                }
                 table {
                     border-style: solid;
                     border-width: 1px;
-                    border-color: darkgrey;
+                    border-color: #829CBC;
                     border-bottom: none;
                     border-left: none;
                     border-right: none;
@@ -79,7 +113,8 @@
                     .avg_row_title {}
                     .avg_row_data {
                         .display-4 {
-                            font-size: 2.2rem;
+                            font-size: 1.2rem;
+                            font-weight: bold;
                         }
                     }
                     .lowhi_row_titles {}
@@ -95,6 +130,24 @@
                     text-align: center;
                 }
             }
+        }
+    }
+}
+
+#detail-home {
+    .graph_heading {
+        text-align: center;
+        margin-bottom: 20px;
+        img {
+            max-width: 32px;
+        }
+        .display-4 {
+            margin: 0px;
+            display: inline-block;
+            font-size: 1.4rem;
+        }
+        hr {
+            border-color: #829CBC;
         }
     }
 }

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from profilemanager.forms import CreateUserForm, EditProfileForm, EditWalletForm, EditExchangeForm
-from profilemanager.models import UserProfile, Wallet, Exchange, ExchangesTraded
+from profilemanager.forms import CreateUserForm, EditProfileForm, EditWalletForm
+from profilemanager.models import UserProfile, Wallet, Exchange
 
 # Sign Up
 def signup(request):
@@ -39,15 +39,6 @@ def editprofile(request):
             wallet = Wallet(user_id=profile, name='New Wallet')
             wallet.save();
             return redirect('/editprofile/')
-
-        if 'save_exchange_button' in request.POST:
-            profile = UserProfile.objects.get(django_user=request.user)
-            form = EditExchangeForm(request.POST, instance=profile)
-            if form.is_valid():
-                form.save()
-                return redirect('/editprofile/')
-            else:
-                print('DEAD PROFILE FORM (SAVE)')
         
         wallets = Wallet.objects.filter(user_id=request.user.pk)
         #Find the wallet that the POST object references
@@ -75,7 +66,7 @@ def editprofile(request):
     else:
         profile = UserProfile.objects.get(django_user=request.user)
         wallets = Wallet.objects.filter(user_id=request.user.pk)
-        exchanges = ExchangesTraded.objects.get(user_id=profile)
+        
         Wallet_forms = {}
         if len(wallets) > 0:
             for wallet in wallets:
@@ -87,11 +78,7 @@ def editprofile(request):
                     }, myid=wallet.pk)
 
                 Wallet_forms.update({wallet.id: wallet_form})
-        exchange_form = EditExchangeForm(initial={
-            'exchange_one': exchanges.exchange_one,
-            'exchange_two': exchanges.exchange_two,
-            'exchange_three': exchanges.exchange_three,
-            })
+
         form = EditProfileForm(initial={
             'currency': profile.currency,
             'firstname': profile.firstname,
@@ -100,8 +87,6 @@ def editprofile(request):
             })
         data = {
             'form': form,
-            'exchange_form': exchange_form,
-            'exchanges': exchanges,
             'wallet_forms': Wallet_forms,
             'wallets': wallets,
             'user': request.user

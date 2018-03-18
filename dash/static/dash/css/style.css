@@ -1,65 +1,106 @@
 #main-home .container-fluid {
   padding: 0px; }
-#main-home #heading small {
-  margin: 20px; }
-#main-home #heading .display-4 {
-  font-size: 2rem;
-  margin: 20px; }
+#main-home #heading {
+  margin-top: 60px;
+  text-align: center; }
+  #main-home #heading img {
+    max-width: 64px; }
+  #main-home #heading img:hover {
+    max-width: 76px; }
+  #main-home #heading .display-4 {
+    font-size: 2rem;
+    color: darkslateblue; }
 
-#summary-home #spot-card {
-  margin: 40px;
-  border: 1px double #47b2cd; }
-  #summary-home #spot-card #top-row {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    margin-right: 20px; }
-    #summary-home #spot-card #top-row .top_col_1 h1,
-    #summary-home #spot-card #top-row .top_col_1 h3 {
-      margin: 0px; }
-    #summary-home #spot-card #top-row .top_col_1 .display-4 {
-      font-size: 1.5rem;
-      display: inline-block; }
-    #summary-home #spot-card #top-row .top_col_1 img {
-      max-width: 48px;
-      margin-bottom: 10px; }
-    #summary-home #spot-card #top-row .top_col_1 ul {
-      list-style-type: none;
-      display: inline-block;
+#summary-home {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 60px; }
+  #summary-home .snapshot_heading {
+    text-align: center;
+    margin-bottom: 20px; }
+    #summary-home .snapshot_heading img {
+      max-width: 32px; }
+    #summary-home .snapshot_heading .display-4 {
       margin: 0px;
-      padding: 0px; }
-      #summary-home #spot-card #top-row .top_col_1 ul li {
-        display: inline-block;
-        margin-left: 20px; }
-    #summary-home #spot-card #top-row .top_col_2 {
-      text-align: right; }
-      #summary-home #spot-card #top-row .top_col_2 small {
-        display: block; }
-  #summary-home #spot-card #second-row {
-    margin-top: 20px; }
+      display: inline-block;
+      font-size: 1.4rem; }
+    #summary-home .snapshot_heading hr {
+      border-color: #829CBC; }
+  #summary-home #spot-card {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    max-width: 26rem;
+    border: 1px double #829CBC; }
+    #summary-home #spot-card #top-row {
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-right: 10px; }
+      #summary-home #spot-card #top-row .top_col_1 {
+        text-align: left; }
+        #summary-home #spot-card #top-row .top_col_1 h1,
+        #summary-home #spot-card #top-row .top_col_1 h3 {
+          margin: 0px; }
+        #summary-home #spot-card #top-row .top_col_1 .display-4 {
+          font-size: 1.5rem;
+          display: inline-block;
+          color: darkslateblue; }
+        #summary-home #spot-card #top-row .top_col_1 .total_cap {
+          display: inline-block;
+          margin-left: 40px; }
+        #summary-home #spot-card #top-row .top_col_1 img {
+          max-width: 48px;
+          margin-bottom: 10px; }
+        #summary-home #spot-card #top-row .top_col_1 ul {
+          list-style-type: none;
+          display: inline-block;
+          margin: 0px;
+          padding: 0px; }
+          #summary-home #spot-card #top-row .top_col_1 ul li {
+            display: inline-block;
+            margin-left: 20px; }
+      #summary-home #spot-card #top-row .top_col_2 {
+        text-align: right; }
+        #summary-home #spot-card #top-row .top_col_2 small {
+          display: block; }
     #summary-home #spot-card #second-row .container,
     #summary-home #spot-card #second-row col {
       padding: 0px; }
     #summary-home #spot-card #second-row .card {
       margin: 0px auto;
-      width: 15rem;
+      width: 12rem;
       border-style: none; }
       #summary-home #spot-card #second-row .card .card-img-top {
         margin: 0px auto;
         max-width: 100px; }
+      #summary-home #spot-card #second-row .card .card-body {
+        padding: 0px; }
       #summary-home #spot-card #second-row .card table {
         border-style: solid;
         border-width: 1px;
-        border-color: darkgrey;
+        border-color: #829CBC;
         border-bottom: none;
         border-left: none;
         border-right: none;
         width: 100%; }
         #summary-home #spot-card #second-row .card table .avg_row_data .display-4 {
-          font-size: 2.2rem; }
+          font-size: 1.2rem;
+          font-weight: bold; }
       #summary-home #spot-card #second-row .card .bold {
         font-weight: bold; }
       #summary-home #spot-card #second-row .card .right {
         text-align: right; }
       #summary-home #spot-card #second-row .card .center {
         text-align: center; }
+
+#detail-home .graph_heading {
+  text-align: center;
+  margin-bottom: 20px; }
+  #detail-home .graph_heading img {
+    max-width: 32px; }
+  #detail-home .graph_heading .display-4 {
+    margin: 0px;
+    display: inline-block;
+    font-size: 1.4rem; }
+  #detail-home .graph_heading hr {
+    border-color: #829CBC; }

@@ -37,17 +37,3 @@ def create_wallet(sender, **kwargs):
         wallet = Wallet.objects.create(user_id=kwargs['instance'])
 post_save.connect(create_wallet, sender=UserProfile)
 
-#User Trading Exchange Reference Model
-class ExchangesTraded(models.Model):
-    user_id = models.OneToOneField(UserProfile, on_delete=models.CASCADE, primary_key=True)
-    exchange_one = models.ForeignKey(Exchange, related_name='related_one', on_delete=models.CASCADE, blank=True, null=True)
-    exchange_two = models.ForeignKey(Exchange, related_name='related_two', on_delete=models.CASCADE, blank=True, null=True)
-    exchange_three = models.ForeignKey(Exchange, related_name='related_three', on_delete=models.CASCADE, blank=True, null=True)
-    def __str__(self):
-        return self.user_id.firstname
-
-#Create Wallet on any UserProfile create event
-def create_trading_exchange(sender, **kwargs):
-    if kwargs['created']:
-        wallet = ExchangesTraded.objects.create(user_id=kwargs['instance'])
-post_save.connect(create_trading_exchange, sender=UserProfile)
