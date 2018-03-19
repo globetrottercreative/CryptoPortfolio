@@ -1,8 +1,9 @@
 from celery.task.schedules import crontab
 from celery.decorators import periodic_task
 from dash.models import SpotPrice, Exchange, Crypto, FiatCurrency, CryptoAverage, HourlyPrice
-from dash.apis import IR_GetMarketSummary, IR_MarketHistorySummary, Cry_GetMarketSummary, Coin_GetMarketSummary
+from dash.apis import IR_GetMarketSummary, IR_MarketHistorySummary, Cry_GetMarketSummary, Coin_GetMarketSummary, CC_GetMarketHistory
 from django.utils import timezone
+from datetime import datetime
 
 @periodic_task(run_every=(crontab(minute='*/1')), name="get_crypto_avg_update_coinmarketcap", ignore_result=True)
 def get_crypto_avg_update_coinmarketcap():
@@ -78,33 +79,32 @@ def get_all_snapshots():
             sp.last_price = "{0:,.2f}".format(CRY_response['LastPrice'])
             sp.save()
 
-@periodic_task(run_every=(crontab(minute='*/30')), name="get_all_IR_hourly", ignore_result=True)
-def get_all_IR_hourly():
+@periodic_task(run_every=(crontab(minute='*/1')), name="get_all_CC_hourly", ignore_result=True)
+def get_all_CC_hourly():
     _Cryptos = Crypto.objects.all()
-    _IndependentReserve = Exchange.objects.get(name='Independent Reserve')
-    _Cryptopia = Exchange.objects.get(name='Independent Reserve')
+    _CryptoCompare = Exchange.objects.get(name='CryptoCompare')
     _FiatCurrencies = FiatCurrency.objects.all()
 
     for crypto in _Cryptos:
         for fiat in _FiatCurrencies:
-            IR_response = IR_MarketHistorySummary(_IndependentReserve.api_url, fiat.code, crypto.code_alt, 240).run()
-            
+            CC_response = CC_GetMarketHistory(_CryptoCompare.api_url, fiat.code, crypto.code).run()
             #After successful response, remove old DB values
+            print(CC_response)
             HourlyPrice.objects.filter(crypto=crypto, currency=fiat.code).delete()
 
-            for point in IR_response:
+            for point in CC_response['Data']:
                 # Put response data in DB
                 dp = HourlyPrice()
                 dp.crypto = crypto
                 dp.currency = fiat.code
-                dp.avg_price = "{0:,.2f}".format(point['AverageSecondaryCurrencyPrice'])
-                dp.day_start = point['StartTimestampUtc']
-                dp.day_end = point['EndTimestampUtc']
-                dp.source_api = _IndependentReserve.api_url
-                dp.source_data = _IndependentReserve.name
-                dp.open_value = "{0:,.2f}".format(point['OpeningSecondaryCurrencyPrice'])
-                dp.high_value = "{0:,.2f}".format(point['HighestSecondaryCurrencyPrice'])
-                dp.low_value = "{0:,.2f}".format(point['LowestSecondaryCurrencyPrice'])
-                dp.close_value = "{0:,.2f}".format(point['ClosingSecondaryCurrencyPrice'])
-                dp.volume = "{0:,.2f}".format(point['SecondaryCurrencyVolume'])
+                dp.avg_price = point['close']
+                dp.day_start = datetime.fromtimestamp(point['time'])
+                dp.day_end = datetime.fromtimestamp(point['time'])
+                dp.source_api = _CryptoCompare.api_url
+                dp.source_data = _CryptoCompare.name
+                dp.open_value = point['open']
+                dp.high_value = point['high']
+                dp.low_value = point['low']
+                dp.close_value = point['close']
+                dp.volume = 0
                 dp.save()

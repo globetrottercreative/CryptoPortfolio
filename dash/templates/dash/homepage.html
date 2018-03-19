@@ -25,7 +25,7 @@
     <div id="summary-home">
         <div class="snapshot_heading container">
             <img class="img-fluid" src="{% static 'dash/img/coins512.png' %}" alt="Cryptocurrency Logo">
-            <h1 class="display-4">Coin/{{Profile.currency}} Snapshot</h1>
+            <h1 class="display-4">NZD Exchanges Summary</h1>
             <hr>
         </div>
         {% for crypto in cryptos %}
@@ -34,29 +34,7 @@
                 <div class="col top_col_1">
                     {% for cryp_avg in cryp_avgs %} {% if cryp_avg.fiat == Profile.currency and cryp_avg.crypto == crypto %}
                     <img class="img-fluid" src="{% static 'dash/img/' %}{{crypto.code}}.png" alt="Cryptocurrency Logo">
-                    <h1 class="display-4">{{crypto}}</h1>
-                    <div class="total_cap">
-                        <small>Market Cap</small>
-                        <h6>${{cryp_avg.cmc_marketcap}}</h6>
-                    </div>
-                    <ul>
-                        <li>
-                            <small>Avg. Price</small>
-                            <h6>${{cryp_avg.cmc_avg_price}}</h6>
-                        </li>
-                        <li>
-                            <small>% Chg(24)</small>
-                            <h6>{{cryp_avg.cmc_pct_change24}}%</h6>
-                        </li>
-                        <li>
-                            <small>% Chg(7)</small>
-                            <h6>{{cryp_avg.cmc_pct_change7d}}%</h6>
-                        </li>
-                        <li>
-                            <small>Total Supply</small>
-                            <h6>{{cryp_avg.cmc_total_sply}}</h6>
-                        </li>
-                    </ul>
+                    <h1 class="display-4">{{crypto}}/{{Profile.currency}}</h1>
                     {% endif %} {% endfor %}
                 </div>
             </div>
@@ -109,32 +87,70 @@
         </div>
         {% endfor %}
     </div>
+    <div id="aggregation-home">
+        <div class="coin_agg_heading container">
+            <img class="img-fluid" src="{% static 'dash/img/graph512.png' %}" alt="Cryptocurrency Logo">
+            <h1 class="display-4">Aggregated Exchange Prices</h1>
+            <hr>
+        </div>
+        <div id="coin_agg_summary">
+            {% for crypto in cryptos %} {% for cryp_avg in cryp_avgs %} {% if cryp_avg.fiat == Profile.currency and cryp_avg.crypto == crypto %}
+            <ul>
+                <li>
+                    <img class="img-fluid" src="{% static 'dash/img/' %}{{crypto.code}}.png" alt="Cryptocurrency Logo">
+                    <h1 class="display-4">{{crypto.code}}/{{Profile.currency}}</h1>
+                </li>
+                <li>
+                    <small>Market Cap</small>
+                    <h6>${{cryp_avg.cmc_marketcap}}</h6>
+                </li>
+                <li>
+                    <small>Avg. Price</small>
+                    <h6>${{cryp_avg.cmc_avg_price}}</h6>
+                </li>
+                <li>
+                    <small>% Chg(24)</small>
+                    <h6>{{cryp_avg.cmc_pct_change24}}%</h6>
+                </li>
+                <li>
+                    <small>% Chg(7)</small>
+                    <h6>{{cryp_avg.cmc_pct_change7d}}%</h6>
+                </li>
+                <li>
+                    <small>Total Supply</small>
+                    <h6>{{cryp_avg.cmc_total_sply}}</h6>
+                </li>
+            </ul>
+            {% endif %}{% endfor %} {% endfor %}
+        </div>
+    </div>
     <div id="detail-home">
         <div class="graph_heading container">
             <img class="img-fluid" src="{% static 'dash/img/graph512.png' %}" alt="Cryptocurrency Logo">
-            <h1 class="display-4">Coin/{{Profile.currency}} Graphs</h1>
+            <h1 class="display-4">Aggregated Exchange Graphs</h1>
             <hr>
         </div>
         <div id="exchange-graphs">
-            <div class="container InRes">
-                <div class="row title">
-                    <h1>Independent Reserve</h1>
-                </div>
+            <div class="container">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="list-group" id="list-tab" role="tablist">
                             <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Ethereum</a>
                             <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Bitcoin</a>
                             <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Bitcoin Cash</a>
                         </div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-9">
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                                <canvas id="myChart" width="400" height="400"></canvas>
+                                <canvas id="myChartEth" width="400" height="300"></canvas>
                             </div>
-                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">I'm BTC</div>
-                            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">I'm BCH</div>
+                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                                <canvas id="myChartBtc" width="400" height="300"></canvas>
+                            </div>
+                            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                                <canvas id="myChartBch" width="400" height="300"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>

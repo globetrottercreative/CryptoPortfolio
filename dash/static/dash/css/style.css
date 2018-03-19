@@ -45,20 +45,9 @@
           font-size: 1.5rem;
           display: inline-block;
           color: darkslateblue; }
-        #summary-home #spot-card #top-row .top_col_1 .total_cap {
-          display: inline-block;
-          margin-left: 40px; }
         #summary-home #spot-card #top-row .top_col_1 img {
-          max-width: 48px;
+          max-width: 40px;
           margin-bottom: 10px; }
-        #summary-home #spot-card #top-row .top_col_1 ul {
-          list-style-type: none;
-          display: inline-block;
-          margin: 0px;
-          padding: 0px; }
-          #summary-home #spot-card #top-row .top_col_1 ul li {
-            display: inline-block;
-            margin-left: 20px; }
       #summary-home #spot-card #top-row .top_col_2 {
         text-align: right; }
         #summary-home #spot-card #top-row .top_col_2 small {
@@ -68,11 +57,11 @@
       padding: 0px; }
     #summary-home #spot-card #second-row .card {
       margin: 0px auto;
-      width: 12rem;
+      width: 10rem;
       border-style: none; }
       #summary-home #spot-card #second-row .card .card-img-top {
         margin: 0px auto;
-        max-width: 100px; }
+        max-width: 80px; }
       #summary-home #spot-card #second-row .card .card-body {
         padding: 0px; }
       #summary-home #spot-card #second-row .card table {
@@ -92,6 +81,37 @@
         text-align: right; }
       #summary-home #spot-card #second-row .card .center {
         text-align: center; }
+
+#aggregation-home .coin_agg_heading {
+  text-align: center;
+  margin-bottom: 20px; }
+  #aggregation-home .coin_agg_heading img {
+    max-width: 32px; }
+  #aggregation-home .coin_agg_heading .display-4 {
+    margin: 0px;
+    display: inline-block;
+    font-size: 1.4rem; }
+  #aggregation-home .coin_agg_heading hr {
+    border-color: #829CBC; }
+#aggregation-home #coin_agg_summary {
+  text-align: center;
+  margin-bottom: 60px; }
+  #aggregation-home #coin_agg_summary ul {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0px; }
+    #aggregation-home #coin_agg_summary ul li {
+      display: block;
+      margin-left: 20px; }
+      #aggregation-home #coin_agg_summary ul li .display-4 {
+        font-size: 1.5rem;
+        color: darkslateblue; }
+      #aggregation-home #coin_agg_summary ul li img {
+        max-width: 40px;
+        margin-bottom: 10px; }
 
 #detail-home .graph_heading {
   text-align: center;
