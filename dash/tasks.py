@@ -89,7 +89,6 @@ def get_all_CC_hourly():
         for fiat in _FiatCurrencies:
             CC_response = CC_GetMarketHistory(_CryptoCompare.api_url, fiat.code, crypto.code).run()
             #After successful response, remove old DB values
-            print(CC_response)
             HourlyPrice.objects.filter(crypto=crypto, currency=fiat.code).delete()
 
             for point in CC_response['Data']:
