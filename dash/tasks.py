@@ -97,8 +97,8 @@ def get_all_CC_hourly():
                 dp.crypto = crypto
                 dp.currency = fiat.code
                 dp.avg_price = point['close']
-                dp.day_start = datetime.fromtimestamp(point['time'])
-                dp.day_end = datetime.fromtimestamp(point['time'])
+                dp.day_start = timezone.make_aware(datetime.fromtimestamp(point['time']), timezone.get_current_timezone())
+                dp.day_end = timezone.make_aware(datetime.fromtimestamp(point['time']), timezone.get_current_timezone())
                 dp.source_api = _CryptoCompare.api_url
                 dp.source_data = _CryptoCompare.name
                 dp.open_value = point['open']

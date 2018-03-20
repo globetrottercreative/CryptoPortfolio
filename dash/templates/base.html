@@ -25,10 +25,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/editprofile/">Profile</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/logout/">Logout</a>
                 </li>
             </ul>
@@ -44,7 +44,17 @@
                 <div class="col-sm-12 col-md-3">
                     <div class="left-footer">
                         <h5>Navigation</h5>
-
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/editprofile/">Profile</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/logout/">Logout</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3">
@@ -52,10 +62,10 @@
                         <h5>Social Media</h5>
                         <ul>
                             <li>
-                                <a href="https://www.facebook.com/GlobeTrotter-Creative-422169234845377/" target="_blank"><img src="/wp-content/themes/Project_Smalls/img/ico_facebook64.png" width="24" height="24" alt="Facebook Icon" title="GlobeTrotter Creative on Facebook"></a>
+                                <a href="https://www.facebook.com/GlobeTrotter-Creative-422169234845377/" target="_blank"><img src="{% static 'dash/img/ico_facebook64.png' %}" width="24" height="24" alt="Facebook Icon" title="GlobeTrotter Creative on Facebook"></a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/gtcreative?lang=en" target="_blank"><img src="/wp-content/themes/Project_Smalls/img/ico_twitter64.png" width="24" height="24" alt="Twitter Icon" title="GlobeTrotter Creative on Twitter"></a>
+                                <a href="https://twitter.com/gtcreative?lang=en" target="_blank"><img src="{% static 'dash/img/ico_twitter64.png' %}" width="24" height="24" alt="Twitter Icon" title="GlobeTrotter Creative on Twitter"></a>
                             </li>
                         </ul>
                     </div>
@@ -63,17 +73,16 @@
                 <div class="col-sm-12 col-md-3">
                     <div class="centreright-footer">
                         <h5>Contact Us!</h5>
-                        <small>Leon Cook, Director/Developer</small>
-                        <small>Email: <a href="mailto:leon@globetrottercreative.com">leon@globetrottercreative.com</a></small>
-                        <small>Anna Cook, Director/Designer</small>
-                        <small>Email: <a href="mailto:anna@globetrottercreative.com">leon@globetrottercreative.com</a></small>
+                        <small>Leon Cook, Developer</small>
+                        <small><a href="mailto:leon@globetrottercreative.com">leon@globetrottercreative.com</a></small>
+                        <small>Anna Cook, Designer</small>
+                        <small><a href="mailto:anna@globetrottercreative.com">leon@globetrottercreative.com</a></small>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3">
                     <div class="right-footer">
                         <h5>Legal</h5>
-                        <small><a class="text-danger" href="/terms/" title="Privacy Policy">Privacy Policy</a> | <a class="text-danger" href="/terms/" title="Terms and Conditions">Terms and Conditions</a></small>
-                        <small class="copyright_text">© 2017 GlobeTrotter Creative. All Rights Reserved.</small>
+                        <small class="copyright_text">© 2018 GlobeTrotter Creative. All Rights Reserved.</small>
                     </div>
                 </div>
             </div>

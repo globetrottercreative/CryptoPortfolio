@@ -232,15 +232,19 @@
     margin-top: 60px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background: #47b2cd;
-    /* Old browsers */
-    background: -moz-linear-gradient(45deg, #47b2cd 0%, #000000 50%, #47b2cd 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #47b2cd 0%, #000000 50%, #47b2cd 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #47b2cd 0%, #000000 50%, #47b2cd 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: darkslateblue;
     color: white;
+    a {
+        color: #829CBC;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0px;
+        a {
+            padding: 0px;
+            padding-bottom: 10px;
+        }
+    }
 }
 
 .footer_div img {
