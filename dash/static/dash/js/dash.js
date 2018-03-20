@@ -11,13 +11,20 @@ var main = function() {
                 data: {
                     labels: data.nz_eth_dates,
                     datasets: [{
-                        label: '60 Day Aggregated-Exch History',
-                        data: data.nz_eth_data,
-                        backgroundColor: '#829CBC',
-                        borderColor: '#483D8B',
-                        borderWidth: 1,
-                        lineTension: 0
-                    }]
+                            label: '60 Day (NZD)',
+                            data: data.nz_eth_data,
+                            borderColor: '#483D8B',
+                            borderWidth: 1,
+                            lineTension: 0
+                        },
+                        {
+                            label: '60 Day (USD)',
+                            data: data.us_eth_data,
+                            borderColor: '#6610f2',
+                            borderWidth: 1,
+                            lineTension: 0
+                        }
+                    ]
                 },
                 options: {}
             });
@@ -28,13 +35,20 @@ var main = function() {
                 data: {
                     labels: data.nz_btc_dates,
                     datasets: [{
-                        label: '60 Day Aggregated-Exch History',
-                        data: data.nz_btc_data,
-                        backgroundColor: '#829CBC',
-                        borderColor: '#483D8B',
-                        borderWidth: 1,
-                        lineTension: 0
-                    }]
+                            label: '60 Day (NZD)',
+                            data: data.nz_btc_data,
+                            borderColor: '#483D8B',
+                            borderWidth: 1,
+                            lineTension: 0
+                        },
+                        {
+                            label: '60 Day (USD)',
+                            data: data.us_btc_data,
+                            borderColor: '#6610f2',
+                            borderWidth: 1,
+                            lineTension: 0
+                        }
+                    ]
                 },
                 options: {}
             });
@@ -45,13 +59,20 @@ var main = function() {
                 data: {
                     labels: data.nz_bch_dates,
                     datasets: [{
-                        label: '60 Day Aggregated-Exch History',
-                        data: data.nz_bch_data,
-                        backgroundColor: '#829CBC',
-                        borderColor: '#483D8B',
-                        borderWidth: 1,
-                        lineTension: 0
-                    }]
+                            label: '60 Day (NZD)',
+                            data: data.nz_bch_data,
+                            borderColor: '#483D8B',
+                            borderWidth: 1,
+                            lineTension: 0
+                        },
+                        {
+                            label: '60 Day (USD)',
+                            data: data.us_bch_data,
+                            borderColor: '#6610f2',
+                            borderWidth: 1,
+                            lineTension: 0
+                        }
+                    ]
                 },
                 options: {}
             });

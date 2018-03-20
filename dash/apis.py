@@ -68,6 +68,12 @@ class ChartData(APIView):
             'nz_btc_dates': nz_btc_dates,
             'nz_bch_data': nz_bch_data,
             'nz_bch_dates': nz_bch_dates,
+            'us_eth_data': us_eth_data,
+            'us_eth_dates': us_eth_dates,
+            'us_btc_data': us_btc_data,
+            'us_btc_dates': us_btc_dates,
+            'us_bch_data': us_bch_data,
+            'us_bch_dates': us_bch_dates,
         }
         return Response(data)
 
