@@ -129,6 +129,15 @@
                 .center {
                     text-align: center;
                 }
+                .green {
+                    color: green;
+                }
+                .red {
+                    color: red;
+                }
+                .black {
+                    color: black;
+                }
             }
         }
     }
@@ -174,6 +183,15 @@
             margin-left: 40px;
             margin-right: 40px;
             padding: 0px;
+            .green {
+                color: green;
+            }
+            .red {
+                color: red;
+            }
+            .black {
+                color: black;
+            }
             li {
                 display: block;
                 margin-left: 20px;

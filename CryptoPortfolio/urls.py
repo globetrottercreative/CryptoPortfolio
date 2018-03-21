@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth.views import login, logout
-from dash.apis import ChartData
+from dash.apis import ChartData, SpotData, CMCData
 
 urlpatterns = [
     path('', include('dash.urls')),
@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^login/$', login, {'template_name': 'profilemanager/login.html'}),
     url(r'^logout/$', logout, {'template_name': 'profilemanager/logout.html'}),
     url(r'^api/data/chart/$', ChartData.as_view(), name='api-chart-data'),
+    url(r'^api/data/spot/$', SpotData.as_view(), name='api-spot-data'),
+    url(r'^api/data/cmc/$', CMCData.as_view(), name='api-cmc-data'),
 ]

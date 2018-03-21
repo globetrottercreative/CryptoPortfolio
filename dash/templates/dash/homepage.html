@@ -47,6 +47,9 @@
                                     <small>Data is from the respective exchanges API</small>
                                 </li>
                                 <li>
+                                    <small>Data will update automatically every 1 minute. Value colour will change depending on the current and new value.</small>
+                                </li>
+                                <li>
                                     <small>Data is converted into your profile's fiat currency (and shown as such)</small>
                                 </li>
                                 <li>
@@ -76,7 +79,7 @@
                 {% for exchange in exchanges %} {% for spot in spots %} {% if spot.crypto.name == crypto.name and spot.source_data == exchange.name and spot.currency == Profile.currency %}
                 <div class="col">
                     <div class="container">
-                        <div class="card">
+                        <div class="card" id="{{crypto.code}}{{exchange.idkey}}">
                             <img class="card-img-top img-fluid" src="{% static 'dash/img/' %}{{exchange.name}}.png" alt="Card image cap">
                             <div class="card-body">
                                 <table>
@@ -87,7 +90,7 @@
                                     </tr>
                                     <tr class="avg_row_data">
                                         <td class="center">
-                                            <h6>${{spot.high_day}}</h6>
+                                            <h6 class="spothigh">${{spot.high_day}}</h6>
                                         </td>
                                     </tr>
                                     <tr class="avg_row_data">
@@ -97,7 +100,7 @@
                                     </tr>
                                     <tr class="avg_row_data">
                                         <td class="center">
-                                            <h1 class="display-4">${{spot.avg_day}}</h1>
+                                            <h1 class="display-4 spotprice">${{spot.avg_day}}</h1>
                                         </td>
                                     </tr>
                                     <tr class="avg_row_data">
@@ -107,11 +110,11 @@
                                     </tr>
                                     <tr class="avg_row_data">
                                         <td class="center">
-                                            <h6>${{spot.low_day}}</h6>
+                                            <h6 class="spotlow">${{spot.low_day}}</h6>
                                         </td>
                                     </tr>
                                 </table>
-                                <p class="card-text"><small class="text-muted">{{spot.timestamp}}</small></p>
+                                <p class="card-text"><small class="text-muted spottime">{{spot.timestamp}}</small></p>
                             </div>
                         </div>
                     </div>
@@ -124,7 +127,7 @@
     <div id="aggregation-home">
         <div class="coin_agg_heading container">
             <img class="img-fluid" src="{% static 'dash/img/graph512.png' %}" alt="Cryptocurrency Logo">
-            <h1 class="display-4">CoinMarketCap Prices</h1>
+            <h1 class="display-4">NZD CoinMarketCap Prices</h1>
             <div class="info-icon-wrap" data-toggle="modal" data-target="#CMCInfoModal">
                 <svg width="12" height="12" viewBox="0 0 8 8">
                     <path class="info-icon" d="M3 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-1.5 2.5c-.83 0-1.5.67-1.5 1.5h1c0-.28.22-.5.5-.5s.5.22.5.5-1 1.64-1 2.5c0 .86.67 1.5 1.5 1.5s1.5-.67 1.5-1.5h-1c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-.36 1-1.84 1-2.5 0-.81-.67-1.5-1.5-1.5z" transform="translate(2)"
@@ -135,7 +138,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h6 class="modal-title" id="CMCInfoModalLabel">CoinMarketCap Prices</h6>
+                            <h6 class="modal-title" id="CMCInfoModalLabel">NZD CoinMarketCap Prices</h6>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -163,30 +166,30 @@
         </div>
         <div id="coin_agg_summary">
             {% for crypto in cryptos %} {% for cryp_avg in cryp_avgs %} {% if cryp_avg.fiat == Profile.currency and cryp_avg.crypto == crypto %}
-            <ul>
+            <ul id="CMC{{crypto.code}}">
                 <li>
                     <img class="img-fluid" src="{% static 'dash/img/' %}{{crypto.code}}.png" alt="Cryptocurrency Logo">
-                    <h1 class="display-4">{{crypto.code}}/{{Profile.currency}}</h1>
+                    <h1 class="display-4">{{crypto.code}}</h1>
                 </li>
                 <li>
                     <small>Market Cap</small>
-                    <h6>${{cryp_avg.cmc_marketcap}}</h6>
+                    <h6 class="marketcap">${{cryp_avg.cmc_marketcap}}</h6>
                 </li>
                 <li>
                     <small>Avg. Price</small>
-                    <h6>${{cryp_avg.cmc_avg_price}}</h6>
+                    <h6 class="price">${{cryp_avg.cmc_avg_price}}</h6>
                 </li>
                 <li>
                     <small>% Chg(24)</small>
-                    <h6>{{cryp_avg.cmc_pct_change24}}%</h6>
+                    <h6 class="chg24">{{cryp_avg.cmc_pct_change24}}%</h6>
                 </li>
                 <li>
                     <small>% Chg(7)</small>
-                    <h6>{{cryp_avg.cmc_pct_change7d}}%</h6>
+                    <h6 class="chg7">{{cryp_avg.cmc_pct_change7d}}%</h6>
                 </li>
                 <li>
                     <small>Total Supply</small>
-                    <h6>{{cryp_avg.cmc_total_sply}}</h6>
+                    <h6 class="supply">{{cryp_avg.cmc_total_sply}}</h6>
                 </li>
             </ul>
             {% endif %}{% endfor %} {% endfor %}

@@ -38,30 +38,22 @@ class EditProfileForm(forms.ModelForm):
     firstname = forms.CharField()
     lastname = forms.CharField()
     email = forms.EmailField()
-    CURRENCY_CHOICES= [
-        ('NZD', 'NZD'),
-        ('USD', 'USD'),
-        ]
-    currency = forms.CharField(widget=forms.Select(choices=CURRENCY_CHOICES))
     class Meta():
         model = UserProfile
         fields = {
             'firstname',
             'lastname',
             'email',
-            'currency',
             }
         labels = {
             'firstname': 'First Name',
             'lastname': 'First Name',
             'email': 'Email',
-            'currency': 'Local Currency',
         }
     field_order = [
         'firstname',
         'lastname',    
         'email',  
-        'currency',
         ]
 
     def save(self, commit=True):
@@ -81,11 +73,6 @@ class EditProfileForm(forms.ModelForm):
         profile.django_user = user
         profile.firstname = self.cleaned_data['firstname']
         profile.lastname = self.cleaned_data['lastname'] 
-        profile.currency = self.cleaned_data['currency']
-        if profile.currency == 'NZD':
-            profile.currency_alt = 'NZDT'
-        elif profile.currency == 'USD':
-            profile.currency_alt = 'USDT'
 
         #Save To DB
         if commit:

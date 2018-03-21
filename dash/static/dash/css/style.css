@@ -89,6 +89,12 @@
         text-align: right; }
       #summary-home #spot-card #second-row .card .center {
         text-align: center; }
+      #summary-home #spot-card #second-row .card .green {
+        color: green; }
+      #summary-home #spot-card #second-row .card .red {
+        color: red; }
+      #summary-home #spot-card #second-row .card .black {
+        color: black; }
 
 #aggregation-home .coin_agg_heading {
   text-align: center;
@@ -119,6 +125,12 @@
     margin-left: 40px;
     margin-right: 40px;
     padding: 0px; }
+    #aggregation-home #coin_agg_summary ul .green {
+      color: green; }
+    #aggregation-home #coin_agg_summary ul .red {
+      color: red; }
+    #aggregation-home #coin_agg_summary ul .black {
+      color: black; }
     #aggregation-home #coin_agg_summary ul li {
       display: block;
       margin-left: 20px; }

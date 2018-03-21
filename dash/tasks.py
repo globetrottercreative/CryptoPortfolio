@@ -1,12 +1,12 @@
 from celery.task.schedules import crontab
 from celery.decorators import periodic_task
 from dash.models import SpotPrice, Exchange, Crypto, FiatCurrency, CryptoAverage, HourlyPrice
-from dash.apis import IR_GetMarketSummary, IR_MarketHistorySummary, Cry_GetMarketSummary, Coin_GetMarketSummary, CC_GetMarketHistory
+from dash.apis import IR_GetMarketSummary, Cry_GetMarketSummary, Coin_GetMarketSummary, CC_GetMarketHistory
 from django.utils import timezone
 from datetime import datetime
 
-@periodic_task(run_every=(crontab(minute='*/1')), name="get_crypto_avg_update_coinmarketcap", ignore_result=True)
-def get_crypto_avg_update_coinmarketcap():
+@periodic_task(run_every=(crontab(minute='*/1')), name="get_CMC", ignore_result=True)
+def get_CMC():
     _Cryptos = Crypto.objects.all()
     _CoinMarketCap = Exchange.objects.get(name='CoinMarketCap')
     _FiatCurrencies = FiatCurrency.objects.all()
@@ -34,8 +34,8 @@ def get_crypto_avg_update_coinmarketcap():
             cp.cmc_avg_price = "{0:,.2f}".format(float(response['price_'+fiat.code.lower()]))
             cp.save();
 
-@periodic_task(run_every=(crontab(minute='*/1')), name="get_all_snapshots", ignore_result=True)
-def get_all_snapshots():
+@periodic_task(run_every=(crontab(minute='*/1')), name="get_Exchs", ignore_result=True)
+def get_Exchs():
     _Cryptos = Crypto.objects.all()
     _IndependentReserve = Exchange.objects.get(name='Independent Reserve')
     _Cryptopia = Exchange.objects.get(name='Cryptopia')
@@ -79,8 +79,8 @@ def get_all_snapshots():
             sp.last_price = "{0:,.2f}".format(CRY_response['LastPrice'])
             sp.save()
 
-@periodic_task(run_every=(crontab(minute='*/1')), name="get_all_CC_hourly", ignore_result=True)
-def get_all_CC_hourly():
+@periodic_task(run_every=(crontab(minute=0, hour='*/12')), name="get_agg_Graph", ignore_result=True)
+def get_agg_Graph():
     _Cryptos = Crypto.objects.all()
     _CryptoCompare = Exchange.objects.get(name='CryptoCompare')
     _FiatCurrencies = FiatCurrency.objects.all()

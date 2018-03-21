@@ -65,6 +65,7 @@ class Exchange(models.Model):
     name = models.CharField(max_length=100, default='')
     website_url = models.CharField(max_length=100, default='')
     country_origin = models.CharField(max_length=100, default='')
+    idkey = models.CharField(max_length=4, default='cccc')
     api_url = models.CharField(max_length=100, default='')
     api_key = models.CharField(max_length=100, default='', blank=True)
     api_secret = models.CharField(max_length=100, default='', blank=True)
