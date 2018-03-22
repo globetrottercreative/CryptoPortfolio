@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'channels',
+    'chat',
     'dash',
     'widget_tweaks',
     'profilemanager',
@@ -144,5 +146,18 @@ CELERY_BEAT_SCHEDULE = {
     'task_number_one': {
         'task': 'dashboard.tasks.task_number_one',
         'schedule': crontab(minute='*/1'),
+    },
+}
+
+
+#Channels Settings
+ASGI_APPLICATION = "CryptoPortfolio.routing.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
     },
 }

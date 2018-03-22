@@ -12,13 +12,13 @@
                 <small>All systems up and running, have a great time!</a></small> {% endif %}
             </div>
             <div class="col">
-                <img class="img-fluid" src="{% static 'dash/img/coins512.png' %}" alt="Cryptocurrency Logo">
+                <img id="head-link-1" class="img-fluid" src="{% static 'dash/img/coins512.png' %}" alt="Cryptocurrency Logo">
             </div>
             <div class="col">
-                <img class="img-fluid" src="{% static 'dash/img/graph512.png' %}" alt="Cryptocurrency Logo">
+                <img id="head-link-2" class="img-fluid" src="{% static 'dash/img/graph512.png' %}" alt="Cryptocurrency Logo">
             </div>
             <div class="col">
-                <img class="img-fluid" src="{% static 'dash/img/news512.png' %}" alt="Cryptocurrency Logo">
+                <img id="head-link-3" class="img-fluid" src="{% static 'dash/img/news512.png' %}" alt="Cryptocurrency Logo">
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
                 <div class="col top_col_1">
                     {% for cryp_avg in cryp_avgs %} {% if cryp_avg.fiat == Profile.currency and cryp_avg.crypto == crypto %}
                     <img class="img-fluid" src="{% static 'dash/img/' %}{{crypto.code}}.png" alt="Cryptocurrency Logo">
-                    <h1 class="display-4">{{crypto}}/{{Profile.currency}}</h1>
+                    <h1 class="display-4">{{crypto}}</h1>
                     {% endif %} {% endfor %}
                 </div>
             </div>

@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^api/data/chart/$', ChartData.as_view(), name='api-chart-data'),
     url(r'^api/data/spot/$', SpotData.as_view(), name='api-spot-data'),
     url(r'^api/data/cmc/$', CMCData.as_view(), name='api-cmc-data'),
+    url(r'^chat/', include('chat.urls')),
 ]

@@ -11,7 +11,7 @@ var main = function() {
                 data: {
                     labels: data.nz_eth_dates,
                     datasets: [{
-                        label: '60 Day (NZD)',
+                        label: '60 Day History',
                         data: data.nz_eth_data,
                         borderColor: '#483D8B',
                         borderWidth: 1,
@@ -27,7 +27,7 @@ var main = function() {
                 data: {
                     labels: data.nz_btc_dates,
                     datasets: [{
-                        label: '60 Day (NZD)',
+                        label: '60 Day History',
                         data: data.nz_btc_data,
                         borderColor: '#483D8B',
                         borderWidth: 1,
@@ -43,7 +43,7 @@ var main = function() {
                 data: {
                     labels: data.nz_bch_dates,
                     datasets: [{
-                        label: '60 Day (NZD)',
+                        label: '60 Day History',
                         data: data.nz_bch_data,
                         borderColor: '#483D8B',
                         borderWidth: 1,
@@ -53,9 +53,7 @@ var main = function() {
                 options: {}
             });
         },
-        error: function(error_data) {
-
-        }
+        error: function(error_data) {}
     })
 };
 
@@ -492,3 +490,13 @@ var updateCMC = function() {
 };
 
 setInterval(updateCMC, 60 * 1000);
+
+$('#head-link-1').click(function() {
+    var tmp = $('#heading').offset();
+    $(window).scrollTo(tmp.top, 100);
+});
+
+$('#head-link-2').click(function() {
+    var tmp = $('#aggregation-home').offset();
+    $(window).scrollTo(tmp.top - 100, 100);
+});

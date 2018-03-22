@@ -29,6 +29,15 @@
                     <a class="nav-link" href="/editprofile/">Profile</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/portfolio/">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/exchanges/">Exchanges</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news/">News</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/logout/">Logout</a>
                 </li>
             </ul>
@@ -36,22 +45,30 @@
     </nav>
     {% else %}
     <!-- Else dont show authenticated stuff -->
-    {% endif %} {% block body %} {% endblock %}
-
+    {% endif %} {% block body %} {% endblock %} {% if request.user.is_authenticated %}
     <div class="container-fluid footer_div">
         <div class="container">
             <div class="row text-center no-gutters">
                 <div class="col-sm-12 col-md-3">
                     <div class="left-footer">
                         <h5>Navigation</h5>
-                        <ul>
-                            <li>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
-                            <li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/editprofile/">Profile</a>
                             </li>
-                            <li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/portfolio/">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/exchanges/">Exchanges</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/news/">News</a>
+                            </li>
+                            <li class="nav-item right">
                                 <a class="nav-link" href="/logout/">Logout</a>
                             </li>
                         </ul>
@@ -88,11 +105,12 @@
             </div>
         </div>
     </div>
-
+    {% endif %}
     <script src="{% static 'dash/js/jquery.min.js' %}"></script>
     <script src="{% static 'dash/js/popper.min.js' %}"></script>
     <script src="{% static 'dash/js/bootstrap.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="{% static 'dash/js/scrollTo.min.js' %}"></script>
     <script src="{% static 'dash/js/dash.js' %}"></script>
     {% block footer %}{% endblock %}
 </body>

@@ -1,7 +1,7 @@
 #main-home .container-fluid {
   padding: 0px; }
 #main-home #heading {
-  margin-top: 60px;
+  margin-top: 100px;
   text-align: center; }
   #main-home #heading img {
     max-width: 64px; }
@@ -13,7 +13,7 @@
 
 #summary-home {
   text-align: center;
-  padding-top: 40px;
+  padding-top: 80px;
   padding-bottom: 60px; }
   #summary-home .snapshot_heading {
     text-align: center;
@@ -45,7 +45,7 @@
       margin-left: 10px;
       margin-right: 10px; }
       #summary-home #spot-card #top-row .top_col_1 {
-        text-align: left; }
+        text-align: center; }
         #summary-home #spot-card #top-row .top_col_1 h1,
         #summary-home #spot-card #top-row .top_col_1 h3 {
           margin: 0px; }
@@ -96,72 +96,76 @@
       #summary-home #spot-card #second-row .card .black {
         color: black; }
 
-#aggregation-home .coin_agg_heading {
-  text-align: center;
-  margin-bottom: 20px; }
-  #aggregation-home .coin_agg_heading .modal {
-    text-align: left; }
-  #aggregation-home .coin_agg_heading .info-icon-wrap {
-    display: inline-block; }
-    #aggregation-home .coin_agg_heading .info-icon-wrap .info-icon {
-      fill: #829CBC; }
-  #aggregation-home .coin_agg_heading .info-icon-wrap:hover .info-icon {
-    fill: #EB6534; }
-  #aggregation-home .coin_agg_heading img {
-    max-width: 32px; }
-  #aggregation-home .coin_agg_heading .display-4 {
-    margin: 0px;
-    display: inline-block;
-    font-size: 1.4rem; }
-  #aggregation-home .coin_agg_heading hr {
-    border-color: #829CBC; }
-#aggregation-home #coin_agg_summary {
-  text-align: center;
-  margin-bottom: 60px; }
-  #aggregation-home #coin_agg_summary ul {
-    list-style-type: none;
-    display: inline-block;
-    margin: 0px;
-    margin-left: 40px;
-    margin-right: 40px;
-    padding: 0px; }
-    #aggregation-home #coin_agg_summary ul .green {
-      color: green; }
-    #aggregation-home #coin_agg_summary ul .red {
-      color: red; }
-    #aggregation-home #coin_agg_summary ul .black {
-      color: black; }
-    #aggregation-home #coin_agg_summary ul li {
-      display: block;
-      margin-left: 20px; }
-      #aggregation-home #coin_agg_summary ul li .display-4 {
-        font-size: 1.5rem;
-        color: darkslateblue; }
-      #aggregation-home #coin_agg_summary ul li img {
-        max-width: 40px;
-        margin-bottom: 10px; }
+#aggregation-home {
+  padding-top: 60px; }
+  #aggregation-home .coin_agg_heading {
+    text-align: center;
+    margin-bottom: 20px; }
+    #aggregation-home .coin_agg_heading .modal {
+      text-align: left; }
+    #aggregation-home .coin_agg_heading .info-icon-wrap {
+      display: inline-block; }
+      #aggregation-home .coin_agg_heading .info-icon-wrap .info-icon {
+        fill: #829CBC; }
+    #aggregation-home .coin_agg_heading .info-icon-wrap:hover .info-icon {
+      fill: #EB6534; }
+    #aggregation-home .coin_agg_heading img {
+      max-width: 32px; }
+    #aggregation-home .coin_agg_heading .display-4 {
+      margin: 0px;
+      display: inline-block;
+      font-size: 1.4rem; }
+    #aggregation-home .coin_agg_heading hr {
+      border-color: #829CBC; }
+  #aggregation-home #coin_agg_summary {
+    text-align: center;
+    margin-bottom: 60px; }
+    #aggregation-home #coin_agg_summary ul {
+      list-style-type: none;
+      display: inline-block;
+      margin: 0px;
+      margin-left: 40px;
+      margin-right: 40px;
+      padding: 0px; }
+      #aggregation-home #coin_agg_summary ul .green {
+        color: green; }
+      #aggregation-home #coin_agg_summary ul .red {
+        color: red; }
+      #aggregation-home #coin_agg_summary ul .black {
+        color: black; }
+      #aggregation-home #coin_agg_summary ul li {
+        display: block;
+        margin-left: 20px; }
+        #aggregation-home #coin_agg_summary ul li .display-4 {
+          font-size: 1.5rem;
+          color: darkslateblue; }
+        #aggregation-home #coin_agg_summary ul li img {
+          max-width: 40px;
+          margin-bottom: 10px; }
 
-#detail-home .graph_heading {
-  text-align: center;
-  margin-bottom: 20px; }
-  #detail-home .graph_heading .modal {
-    text-align: left; }
-  #detail-home .graph_heading .info-icon-wrap {
-    display: inline-block; }
-    #detail-home .graph_heading .info-icon-wrap .info-icon {
-      fill: #829CBC; }
-  #detail-home .graph_heading .info-icon-wrap:hover .info-icon {
-    fill: #EB6534; }
-  #detail-home .graph_heading img {
-    max-width: 32px; }
-  #detail-home .graph_heading .display-4 {
-    margin: 0px;
-    display: inline-block;
-    font-size: 1.4rem; }
-  #detail-home .graph_heading hr {
-    border-color: #829CBC; }
-#detail-home #exchange-graphs {
-  margin-bottom: 60px; }
+#detail-home {
+  padding-top: 60px; }
+  #detail-home .graph_heading {
+    text-align: center;
+    margin-bottom: 20px; }
+    #detail-home .graph_heading .modal {
+      text-align: left; }
+    #detail-home .graph_heading .info-icon-wrap {
+      display: inline-block; }
+      #detail-home .graph_heading .info-icon-wrap .info-icon {
+        fill: #829CBC; }
+    #detail-home .graph_heading .info-icon-wrap:hover .info-icon {
+      fill: #EB6534; }
+    #detail-home .graph_heading img {
+      max-width: 32px; }
+    #detail-home .graph_heading .display-4 {
+      margin: 0px;
+      display: inline-block;
+      font-size: 1.4rem; }
+    #detail-home .graph_heading hr {
+      border-color: #829CBC; }
+  #detail-home #exchange-graphs {
+    margin-bottom: 60px; }
 
 /* Start Footer*/
 .footer_div {
